@@ -8,7 +8,7 @@
 ```
 spring.io
 ```
-* Core container: the heart of it for creating beans, and making the 
+* Core container: the heart of it for creating beans 
   * Context: the Spring container that holds the beans in memory
 * Infrastructure: To add services like Security and transcations to your webapp
 * Data Access Layer: To interact with databases. We have a number of good helper classes for JDBC and JMS
