@@ -7,9 +7,6 @@
 * Initially a simpler and lightweight alternative to J2EE
 
 ### Spring Framework Overview
-```
-spring.io
-```
 * Core container: the heart of it for creating beans 
   * Context: the Spring container that holds the beans in memory
 * Infrastructure: To add services like Security and transcations to your webapp
