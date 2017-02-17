@@ -12,7 +12,7 @@ spring.io
   * Context: the Spring container that holds the beans in memory
 * Infrastructure: To add services like Security and transcations to your webapp
 * Data Access Layer: To interact with databases. We have a number of good helper classes for JDBC and JMS
-  * ORM: Object related mapping to hook up to other frameworks
+  * ORM: Object related mapping to hook up to other frameworks like Hibernate
   * JMS: To write to queues in an asynchronous fashion
 * Web Layer: Home for the Spring MVC framework. Can use struts and other frameworks
 * Test Layer: Extensive support for Test Driven Development
