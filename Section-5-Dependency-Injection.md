@@ -55,3 +55,24 @@ public BaseballCoach(FortuneService theFortuneService) {
 ```java
 Coach theCoach = context.getBean("myCoach", Coach.class);
 ```
+
+### Setter Injection
+**Step 1: Create the setter method(s) in your class for injections**  
+* Create new no-arg constructor
+```java
+public CricketCoach() {
+	System.out.println("CricketCoach: inside no-arg constructor");
+}
+```
+* Create a setFortuneService method 
+```java
+public void setFortuneService(FortuneService fortuneService) {
+	System.out.println("CricketCoach: inside setter method - setFortuneService");
+	this.fortuneService = fortuneService;
+}
+```
+**Step 2: Configure the dependency injection in Spring config file**  
+* Same as Constructor injection, except that instead of constructor-arg, you have property name
+* property name fortuneService corresponds to setFortuneService method in the class
+  * Takes the property name and capitalizes the first letter of the property name
+  * prefixes set to it, and calls that method in the class
