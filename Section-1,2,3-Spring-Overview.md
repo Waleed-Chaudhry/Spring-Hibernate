@@ -36,17 +36,17 @@ Available on spring.io
 * Select the unzipped Tomcat server
 
 ### Downloading Spring JAR Files
-**Creating a new Eclipse Project**  
+#### Creating a new Eclipse Project
 * File -> New Java Project -> Give it the name
 * Create a new folder in your eclipse folder called lib
 
-**Setting up the libraries**
+#### Setting up the libraries
 * Download the zip for Spring Jar from the latest release at: http://repo.spring.io/release/org/springframework/spring/
 * Extract the zip, go to lib and copy all the JAR files from there to the lib folder in Eclipse
 * Download the zip for Apache Commons Logging from the latest release at: https://commons.apache.org/proper/commons-logging/download_logging.cgi
   * Spring depends on this library
 * Extract the JAR file (commons-logging) from there to the lib folder in Eclipse
 
-**Adding the libraries to the Project Class Path**
+#### Adding the libraries to the Project Class Path
 * Right Click the project name -> Properties -> Java Build Path -> Libraries -> Add JARs -> and select all the JARs you added
 * You should be able to see the JARs in a new Eclipse Folder called Referenced Libraries
