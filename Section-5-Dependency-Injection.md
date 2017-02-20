@@ -51,7 +51,7 @@ public String getDailyFortune() {
 <constructor-arg ref="myFortuneService" /> <!--ref matches the id of the dependency-->
 ```
 
-#### Back to Main.java
+#### Main.java
 * HelloSpringApp.java
 * Almost everything here (including the creation of the coach class) remains the same as main app in Inversion of Control
 * Spring handles the dependency injection for us
@@ -94,7 +94,7 @@ public void setFortuneService(FortuneService fortuneService) {
   * Takes the property name and capitalizes the first letter of the property name
   * prefixes set to it, and calls that method in the class
 
-#### Back to Main.java
+#### Main.java
 * Almost Everything remains the same as Setter Injection (SetterDemoApp.java)
 * Difference: We're using CricketCoach class instead of Coach Interface
 ```java
@@ -132,7 +132,7 @@ public String getEmailAddress() {
 ```
 * This will call the setEmailAddress method we defined in CricketCoach.java
 
-#### Back to Main.java
+#### Main.java
 * We can now get the literal values we just added
 ```java
 // call our new methods to get the literal values
@@ -163,5 +163,5 @@ foo.email=myeasycoach@luv2code.com
 <property name="emailAddress" value="${foo.email}" />
 ```
 
-#### Back to Main.java 
+#### Main.java 
 * Nothing changes here, we just see a different value for the email address as defined in sports.properties
