@@ -50,3 +50,8 @@ Available on spring.io
 #### Adding the libraries to the Project Class Path
 * Right Click the project name -> Properties -> Java Build Path -> Libraries -> Add JARs -> and select all the JARs you added
 * You should be able to see the JARs in a new Eclipse Folder called Referenced Libraries
+
+### Spring Container
+The Spring Container provides an object factory which handles:
+* Inversion of Control (Section 4)
+* Dependency Injection (Section 5)
