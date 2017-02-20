@@ -1,15 +1,10 @@
 # Dependency Injection
 
-You ask for a car  
-The car factory injects the all the dependencies into the car e.g the wheel, tires, windows etc  
+If you want to manufacture a new car, you comunicate that request to the factory. The factory then injects the all the dependencies into the car e.g the wheel, tires, windows etc . 
 
-Spring has an object Factories. The Spring framework can inject all dependencies of the coach object  
+Similarly, Spring has an object factories which can inject all dependencies of the coach object  
 
-The Spring container has two functions:
-* Inversion of Control
-* Dependency Injection
-
-**Requirement Defintion:**  
+#### Requirement Defintion:
 * The coach also has to provide a daily fortune
 * But it needs a helper class called HappyFortuneService to do that
 
@@ -19,12 +14,12 @@ The Spring container has two functions:
 
 Note: You may need to make changes to Main.java
 
-**Step 1: Define the dependency interface and class**  
+#### Step 1: Define the dependency interface and class
 * Create a new interface, FortuneService
 * Create a new HappyFortuneService which implements the FortuneService interface
 * Add a new empty method getDailyFortune() to Coach interface to force all coaches to implement the method 
 
-**Step 2: Create a constructor in your class for injections**  
+#### Step 2: Create a constructor in your class for injections
 * Create the instance of the dependency class in BaseballCoach.java
 ```java
 // define a private field for the dependency
@@ -44,7 +39,7 @@ public String getDailyFortune() {
 }
 ```
 
-**Step 3: Configure Dependency Injection in Spring config file**    
+#### Step 3: Configure Dependency Injection in Spring config file  
 * Define the dependency in applicationContext.xml
 ```xml
 <bean id="myFortuneService"
@@ -56,7 +51,7 @@ public String getDailyFortune() {
 <constructor-arg ref="myFortuneService" /> <!--ref matches the id of the dependency-->
 ```
 
-**Back to Main.java**
+#### Back to Main.java
 * HelloSpringApp.java
 * Almost everything here (including the creation of the coach class) remains the same as main app in Inversion of Control
 * Spring handles the dependency injection for us
@@ -70,7 +65,7 @@ System.out.println(theCoach.getDailyFortune());
 * Using CricketCoach.java for this
 * Port over getDailyWorkout() and getDailyFortune() methods and fortuneService instance variable from BaseballCoach.java
 
-**Step 1: Create the setter method(s) in your class for injections**  
+#### Step 1: Create the setter method(s) in your class for injections**  
 * Create new no-arg constructor
 ```java
 public CricketCoach() {
@@ -85,7 +80,7 @@ public void setFortuneService(FortuneService fortuneService) {
 }
 ```
 
-**Step 2: Configure the dependency injection in Spring config file**  
+#### Step 2: Configure the dependency injection in Spring config file**  
 * Define the dependency in applicationContext.xml (Same as Constructor Injection)
 * Set up Setter Injection (Same as Constructor Injection, except that instead of constructor-arg, you have property name)
 ```xml
@@ -99,7 +94,7 @@ public void setFortuneService(FortuneService fortuneService) {
   * Takes the property name and capitalizes the first letter of the property name
   * prefixes set to it, and calls that method in the class
 
-**Back to Main.java**  
+#### Back to Main.java
 * Almost Everything remains the same as Setter Injection (SetterDemoApp.java)
 * Difference: We're using CricketCoach class instead of Coach Interface
 ```java
@@ -112,7 +107,7 @@ CricketCoach theCoach = context.getBean("myCricketCoach", CricketCoach.class);
 * For example, adding the team name or email address
 * Still part of Setter injection
 
-**Step 1: Create the setter method(s) in your class for injections**
+#### Step 1: Create the setter method(s) in your class for injections
 * Create private fields and setter methods for those fields
 ```java
 private String emailAddress;
@@ -128,7 +123,7 @@ public String getEmailAddress() {
 }
 ```
 
-**Step 2: Configure the dependency injection in Spring config file**  
+#### Step 2: Configure the dependency injection in Spring config file
 * Define the dependency in applicationContext.xml
 * Same as Setter Injection, except instead of ref, you have the actual value
 ```xml
@@ -137,7 +132,7 @@ public String getEmailAddress() {
 ```
 * This will call the setEmailAddress method we defined in CricketCoach.java
 
-**Back to Main.java**  
+#### Back to Main.java
 * We can now get the literal values we just added
 ```java
 // call our new methods to get the literal values
@@ -148,25 +143,25 @@ System.out.println(theCoach.getEmailAddress());
 * The email address thebestcoach@luv2code.com was hardcoded into the applicationContext.xml file
 * Instead we want to read the values from a properties file
 
-**Step 1: Create Properties File**  
+#### Step 1: Create Properties File
 * Create a new file sport.properties in Eclipse (Right Click src -> New -> File)
 * Add the value to the file
 ```
 foo.email=myeasycoach@luv2code.com
 ```
-**Step 2: Load Properties File in Spring config file**  
+#### Step 2: Load Properties File in Spring config file
 * In applicationContext.xml add the properties file before you create your beans
 ```xml
 <!-- load the properties file: sport.properties -->
 <context:property-placeholder location="classpath:sport.properties"/>
 ```
 
-**Step 3: Reference values from Properties file**  
+#### Step 3: Reference values from Properties file
 * In applicationContext.xml, replace the literal value "thebestcoach@luv2code.com" with "${foo.email}"
 * foo.email is the name you chose for the property in sport.properties
 ```xml
 <property name="emailAddress" value="${foo.email}" />
 ```
 
-**Back to Main.java**  
+#### Back to Main.java 
 * Nothing changes here, we just see a different value for the email address as defined in sports.properties
