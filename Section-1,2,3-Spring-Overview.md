@@ -55,3 +55,8 @@ Available on spring.io
 The Spring Container provides an object factory which handles:
 * Inversion of Control (Section 4)
 * Dependency Injection (Section 5)
+
+There are 3 ways of configuring the Spring Container
+* XML configuration file (legacy, but most legacy apps still use this) - Section 4 and 5  
+* Java Annotations (modern) - Section 7,8 and 9
+* Java Source Code (modern) - Section 10
