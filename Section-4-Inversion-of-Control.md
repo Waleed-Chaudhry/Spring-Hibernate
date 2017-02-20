@@ -1,29 +1,47 @@
 # Inversion of Control
 
-Thee approach of outsourcing the construction and management of objects  
+The approach of outsourcing the construction and management of objects to an object factory. 
 
-### Lecture 2  
-Create a new Package -> Right Click src -> new package  
+#### Requirement
+* We want the App to get getDailyWorkOut() from BaseballCoah.java
+* Two sub requirements:
+  1. App should be able to work for a coach in another sport (CricketCoach, BaseballallCoach etc)
+  2. The App should be configurable: 
 
-POJO -> Plain old Java Object  
-We want to get getDailyWorkOut() from BaseballCoah.java  
+### Initial Setup
+* Create a new Package (Right Click src -> new package) 
+* Create a class BaseballCoach.java which has getDailyWorkOut() method
+* In Main.java (HelloSpringApp.java) create an instance of the class, and call getDailyWork()
 
-Right click package to create new interface or class
-MyApp class to create the Baseball Coach
-
-Right click the java class, and click Run as and pick the MainClass  
-
-Interface doesn't have any implementation of the method
-
+### Supporting a coach in another sport
+* Create an interface Coach
+```java
+public interface Coach {
+	public String getDailyWorkout();
+}
+/// The interface doesn't have the implementation of the method
+```
+* Modify BaseballCoach.java to implement the interface coach
+```java
 public class BaseballCoach implements Coach {
 }
-Can create an instance of the class in MyApp.java as Coach coach = new Baseball Coach() //using the name of the interace
-@Override to override an interface defined method
-
-### Lecture 3
-Add a track coach  
-Have handled the change coach for another sport using the iterface  
-The App isn't configurable. The type of coach is hard coded still  
+```
+* In BaseballCoach.java add the implementation to the method
+```java
+@Override #to override an interface defined method
+public String getDailyWorkout() {
+	return "Spend 30 minutes on batting practice";
+}
+```
+* In Main.java we can now create an instance of the class using the name of the interface
+```java
+Coach coach = new Baseball Coach() //using the name of the interace
+```
+* We can simply create a Track by modifying Main.java to
+```java
+Coach coach = new Track Coach()
+```
+* However the type of the coach (new Track Coach, or new BaseBall Coach) is still hardcoded. We need to make this configurable using Spring
 
 ### Lecture 4
 Look through the lecture slides for this  
