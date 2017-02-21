@@ -46,3 +46,45 @@ context.close();
 scope="prototype">	<!-- Add this to the myCoach bean -->
 ```
 * Run the App (Insert second image here)
+
+### Bean Lifecycle
+
+#### Step 1: Define your methods for init and destroy methods
+* Add the new methods to TrackCoach.java
+```java
+	// add an init method
+	public void doMyStartupStuff() {
+		System.out.println("TrackCoach: inside method doMyStartupStuff");
+	}
+	
+	// add a destroy method
+	public void doMyCleanupStuffYoYo() {
+		System.out.println("TrackCoach: inside method doMyCleanupStuffYoYo");		
+	}
+```
+
+#### Step 2: Configure the method names in Spring config file
+* Copy beanScope-applicationContext.xml and paste it to beanLifeCycle-applicationContext.xml in your src folder
+* Delete the scope="prototype" entry (We can leave it there if we want)
+* Add the methods to the myCoach bean in beanLifeCycle-applicationContext.xml
+```xml
+init-method="doMyStartupStuff"
+destroy-method="doMyCleanupStuffYoYo">
+<!-- the methods names match up with the defined methods from Step 1, exactly
+```
+
+#### Main.java
+* Copy BeanScopeDemoApp.java to BeanLifeCycleDemoApp.java
+* Change the xml config name
+```java
+ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beanLifeCycle-applicationContext.xml");
+```
+* Delete the print lines for object reference and memory location, and add a method call
+```java
+System.out.println(theCoach.getDailyWorkout());
+```
+* Run the App
+  * Loads the xml
+  * Runs the init method
+  * Calls your method
+  * Runs the destroy method while closing the context
