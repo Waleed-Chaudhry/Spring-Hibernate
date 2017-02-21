@@ -38,11 +38,11 @@ System.out.println("\nMemory location for alphaCoach: " + alphaCoach + "\n");
 // close the context
 context.close();
 ```
-* Insert Image here
+* Run the App (Insert Image here)
 
 #### Prototype
 * Change the scope of myCoach in beanScope-applicationContext.xml
 ```xml
 scope="prototype">	<!-- Add this to the myCoach bean -->
 ```
-* Insert second image here
+* Run the App (Insert second image here)
