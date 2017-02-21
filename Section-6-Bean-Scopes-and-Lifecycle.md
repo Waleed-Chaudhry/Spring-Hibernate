@@ -1,8 +1,8 @@
 # Bean Scopes and Lifecycle
 
 ### Overview
-* Read the lecture slides
-Singleton -> Stateless data  
+Read the lecture slides  
+Singleton -> Stateless data (default)   
 Prototype -> Stateful data  
 
 ### Bean Scopes
