@@ -8,21 +8,8 @@
 <context:component-scan base-package="com.luv2code.springdemo" />
 ```
 
-#### Step 1: Create a Java class and annotate as @Configuration
-
-#### Step 2: Add component scanning support: @ComponentScan (optional)
-
-#### Step 3: Read Spring Java configuration class
-
-
-#### Step 4: Retrieve bean from Spring container
-* Nothing changes here
-* Run the App
-* We can verify that we're not using applicationContext.xml
-* instead we're using our Java Configuration class, as seen in the print logs
-
-
 ### Defining Spring Beans
+* We'll create the beans and inject the dependencies in this section
 
 #### Initial Setup
 * We're still using spring-demo-annotations from Sections 7-9
@@ -113,3 +100,5 @@ AnnotationConfigApplicationContext context = new AnnotationConfigApplicationCont
   SwimCoach theCoach = context.getBean("swimCoach", SwimCoach.class);
 ```
 * swimCoach is the bean id which was the name of the 
+
+### Injection Values for Properties File
