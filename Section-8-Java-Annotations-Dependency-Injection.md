@@ -1,4 +1,4 @@
-# Java Annotations Dependency Injection.md
+# Java Annotations: Dependency Injection.md
 
 * Will use the same coach and fortune service example as before. 
 * Called Spring AutoWiring
