@@ -82,12 +82,12 @@ context.close();
 * Spring also supports Default Bean IDs
 * For TennisCoach.java it will be tennisCoach (class name with the first letter lowercased)
 
-### Step 1: Remove the explicit bean id from TennisCoach.java
+#### Step 1: Remove the explicit bean id from TennisCoach.java
 ```java
 @Component //removed ("thatSillyCoach")
 ```
 
-### Step 2: Change code to use default bean id
+#### Step 2: Change code to use default bean id
 * Change the get Bean step in Main.java
 ```java
 // get the bean from spring container
