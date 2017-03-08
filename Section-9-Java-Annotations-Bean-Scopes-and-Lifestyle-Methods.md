@@ -17,7 +17,9 @@ Prints out two constuctors in prototype, not 1 (as in singleton)
 * Step 1 is the same as Section 6 (We add methods to TennisCoach.java and change the print lines accordingly)
 
 #### Step 2: 
-* Remove the @Scope form TennisCoach.java (Don't have to do it)
+* Remove the @Scope form TennisCoach.java
+  * For "prototype" scoped beans, Spring does not call the @PreDestroy method
+  * Section 9, Lecture 79
 * Add the @PostConstruct and @PreDestroy Annotation in TennisCoach.java
 ```java
 // define my init method
