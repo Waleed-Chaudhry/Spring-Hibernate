@@ -2,8 +2,12 @@
 
 ### Overview
 Read the lecture slides  
-Singleton -> Stateless data (default)   
-Prototype -> Stateful data  
+Singleton
+* You get the same object reference if you create multiple instances of the bean
+* Stateless data (default)   
+Prototype 
+* You get a new object for each request of creating new object
+* Stateful data  
 
 ### Bean Scopes
 #### Initial Setup
