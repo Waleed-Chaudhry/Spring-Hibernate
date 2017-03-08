@@ -95,3 +95,7 @@ Coach theCoach = context.getBean("tennisCoach", Coach.class); //replaced "thatSi
 ```
 * Run Main.java
 * If you use a bean id that you haven't defined, you'll see a NoSuchBeanDefinitionException
+
+#### Default Bean Names: Special Case:
+* When BOTH the first and second characters of the class name are upper case, then the name is NOT converted
+* Default bean id for RESTFortuneService is also RESTFortuneService
