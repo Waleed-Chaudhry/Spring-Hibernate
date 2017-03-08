@@ -124,3 +124,53 @@ public void doSomeCrazyStuff(FortuneService theFortuneService) {
 * We're also changing the print line to display doSomeCrazyStuff() instead, just to see how Spring works
 
 ### Field Injection
+* Inject dependencies by setting field values on yur class directly (including private fields)
+* Accomplished by using Java Reflection
+
+#### Step 1: Configure the dependency using the @Autowired Annotation
+* Applied directly to the field. We don't need setter methods or constructors
+* In TennisCoach.java comment out doSomeCrazyStuff()
+* Add the @Autowired annotation directly above the private fortuneService instance variable
+```java
+@Autowired
+private FortuneService fortuneService;
+```
+* Spring will set the field directly behind the scenes, without your having to do any additional work
+
+#### Main.java
+* No changes, just run the application
+
+#### Which Injection Should You Use
+* Choose a style and stay consistent.
+* The functionality is the same across the board for all three injection types
+
+### Qualifiers for Dependency Injection
+
+#### Creating the Exception
+What happens if there are muliple implementations of the FortuneService Interface? Which one will Spring choose?
+* Create 3 more implementation of FortuneService: HappyFortuneService.java, RandomFortuneService.java and RESTFortuneService
+* Make sure you add the @Component to each of the implementations, or Spring won't scan the components
+* Make no other changes to TennisCoach.java or Main.java
+* Run Main.java
+  * We'll get a NoUniqueBeanDefinitionException. Expected single matching bean but found 4
+  * The three newly added implementations and HappyFortuneService.java which we already had
+
+#### Fixing the Exception
+* We need to tell Spring which bean to use using a Qualifier in TennisCoach.java
+```java
+@Autowired
+@Qualifier("happyFortuneService") #bean id 
+private FortuneService fortuneService;
+```
+* Because we're using the default component name in TennisCoach.java, the bean id is happyFortuneService
+* We can change the @Qualifier to use RandomFortuneService.java
+```java
+@Autowired
+@Qualifier("randomFortuneService")
+private FortuneService fortuneService;
+```
+* The @Qualifier can be annotated to all three types on dependency injections
+  * However, it can be tricky to use with Constructor Injection
+  * See Section 8, lecture 72: Using @Qualifier with Constructors
+* You can also use inject values form a properties file using annotations
+  * See Section 8, Lecture 73: How to inject properties file using Java annotations
