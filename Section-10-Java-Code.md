@@ -94,11 +94,62 @@ AnnotationConfigApplicationContext context = new AnnotationConfigApplicationCont
 * SpringConfig is the name of the Java Configuration Class we created in Step 1
 
 #### Step 4: Retrieve bean from Spring container
-* We're creating a different coach, so we use "swimCoach" and SwimCoach.class instead of "tennisCoach" and Coach.class
+* We're creating a different coach, so we use "swimCoach" instead of "tennisCoach"
 ```java
-  // get the bean from spring container
-  SwimCoach theCoach = context.getBean("swimCoach", SwimCoach.class);
+// get the bean from spring container
+Coach theCoach = context.getBean("swimCoach", Coach.class);
 ```
 * swimCoach is the bean id which was the name of the 
 
 ### Injection Values for Properties File
+
+#### Step 1: Create Properties
+* Right click src -> new file and use the name sport.properties
+* Add these name value pairs to properties to the file
+```
+foo.email=myeasycoach@luv2code.com
+foo.team=Awesome Java Coders
+```
+
+#### Step 2: Load Properties file in Spring config
+* Add the PropertySource to SportConfig.java
+```java
+@PropertySource("classpath:sport.properties")
+public class SportConfig {
+```
+
+#### Step Reference Values from Properties File
+* In SwimCoach.java create private instance variables for the email and team
+* Add the @Value Annotation (This is Field Injection)
+```java
+@Value("${foo.email}")
+private String email;
+
+@Value("${foo.team}")
+private String team;
+```
+* foo.email and foo.team are the actual property names from sport.properties
+* Create getter methods for email and team
+```java
+public String getEmail() {
+	return email;
+}
+
+public String getTeam() {
+	return team;
+}	
+```
+
+#### Main.java
+* Create a SwimCoach, not a generic coach
+	* This is because we want to make use of the new methods getEmail() and getTeam() we just created
+	* These methods are not in Coach Interface
+```java
+SwimCoach theCoach = context.getBean("swimCoach", SwimCoach.class);
+```
+* Call the new methods
+```java
+// call our new swim coach methods ... has the props values injected
+System.out.println("email: " + theCoach.getEmail());
+System.out.println("team: " + theCoach.getTeam());
+```
