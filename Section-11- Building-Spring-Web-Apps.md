@@ -8,6 +8,8 @@
 
 ### Spring MVC Configuration
 
+#### Initial Setup
+
 * Change your Eclipse perspective
   * Window > Perspective > Open Perspective > Jave EE
 * Create a new Project
